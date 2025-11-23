@@ -1,0 +1,21 @@
+import './index.css'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
+import { ToastContainer } from 'react-toastify'
+import { Provider } from 'react-redux'
+import { persistor, store } from './store'
+import { PersistGate } from 'redux-persist/integration/react'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    {/* Toast Container should be added once in your app */}
+   <Provider store={store}> 
+   <PersistGate loading={<div>Loading...</div>} persistor={persistor}>
+     <ToastContainer />
+    <App />
+   </PersistGate>
+    </Provider>
+    
+  </StrictMode>
+)
